@@ -18,28 +18,48 @@ All balances, linked accounts, contacts, chat threads, paid bills, scratched rew
 
 ---
 
-## Key Features
+## Visual Walkthrough
 
-### Authentication & Onboarding
-- **Sign In & Sign Up Modes**: Segmented auth flow with country dial-code selector, formatted mobile number input, optional email validation, and terms consent on sign-up.
-- **6-Digit OTP Verification**: Custom numeric keypad (`GPayNumericKeypad`), 6-digit OTP slot row, simulated SMS delivery banner with one-tap auto-fill, 30-second resend countdown, and error handling.
+### 1. Onboarding, OTP Security & Home Dashboard
 
-### Universal UPI PIN Security & Success Experience
-- **4-Digit NPCI-Style UPI PIN Gate**: Every payment execution path—Send Money, UPI Lite payments, UPI Lite top-ups, utility bill payments, mobile recharges, bank transfers, and self transfers—requires 4-digit UPI PIN confirmation (`NpciPinPadStage` / `UniversalPaymentFlowDialog`).
-- **Animated Success Hero (`GPaySuccessTickHero`)**: Multi-layer Compose `Canvas` payment confirmation featuring radial sonar ripples, a rotating 12-lobe verification seal, emerald gradient medallion, progressive self-drawing checkmark stroke, confetti particle burst, and a `DigitalReceiptSummaryCard` with UPI reference ID and account metadata.
+| Sign In & Sign Up | 6-Digit OTP Verification | Home Dashboard |
+| :---: | :---: | :---: |
+| <img src="screenshots/01_auth_signin.png" width="240" alt="Phone Sign In Screen" /> | <img src="screenshots/02_auth_otp.png" width="240" alt="6-Digit OTP Verification Screen" /> | <img src="screenshots/03_home_dashboard.png" width="240" alt="Home Dashboard Screen" /> |
+| Country dial-code selector, Sign In / Sign Up tabs, one-tap demo number fill & custom keypad | Interactive 6-digit OTP slots, 30-second SMS/WhatsApp resend timer & validation states | Quick-action grid, primary account peek card, UPI Lite balance, People & Businesses grids |
 
-### Payments, Banking & Transfers
-- **Home Dashboard (`HomeScreen`)**: Quick-action grid (Scan QR, Pay Contacts, Pay Phone Number, Bank Transfer, Pay UPI ID, Self Transfer, Bills & Recharges, Mobile Recharge), People & Businesses carousels, overdue bill banner, UPI Lite quick top-up sheet, and bottom navigation shortcuts.
-- **P2P & Merchant Chat Threads (`PersonChatScreen`)**: Conversational payment history with bubbles for sent/received transfers, payment requests, and inline chat messages.
-- **QR Scanner & Personal QR (`QrScannerScreen`)**: Animated laser viewfinder canvas with torch tint toggle, preset demo QR targets (merchant, contact, and utility bill), and a `Show My QR` sheet (`GPayQrCodeView`) with clipboard sharing.
-- **Multi-Account Management (`CardsAndBanksScreen`)**: Switch primary account across seeded bank accounts and RuPay Credit on UPI, add new bank accounts, check balances (`CheckBalanceScreen`), or top up the on-device UPI Lite wallet (`₹2,000` cap).
-- **Bank & Self Transfers (`BankTransferScreen`, `SelfTransferScreen`)**: Account/IFSC validation for external transfers and between-account self transfers with live balance updates.
+---
 
-### Bills, Recharges, Rewards & Insights
-- **Utility Bills & Mobile Recharges**: Category filters across Electricity, Mobile Recharge, DTH/Cable TV, FASTag, Credit Card, Broadband, Piped Gas, and Water, plus categorized telecom recharge plans (`Popular`, `Data Add-on`, `Annual`).
-- **Interactive Scratch Cards & Offers (`RewardsScreen`)**: Pointer-drag `Canvas` scratch-to-reveal cashback cards that credit earnings directly, paired with an Offers tab featuring one-tap promo code copy.
-- **Transaction History & Search (`TransactionHistoryScreen`, `SearchOverlayScreen`)**: Categorized ledger with filter chips and unified search across people, businesses, and bills.
-- **Credit Score & Profile (`CibilScoreScreen`, `ProfileScreen`)**: CIBIL score summary view (`784`), theme switcher (`System`, `Light`, `Dark`), biometric lock toggle, demo data reset, and sign-out.
+### 2. End-to-End Payment Flow & Mandatory UPI PIN Authorization
+
+> Every payment path in Payit—Send Money, UPI Lite payments & top-ups, utility bills, mobile recharges, bank transfers, and self transfers—is gated behind **4-digit NPCI-style UPI PIN** verification before completing with the multi-layer `GPaySuccessTickHero` animation.
+
+| QR Code Scanner | P2P Payment Chat Ledger | Send Money & Account Picker |
+| :---: | :---: | :---: |
+| <img src="screenshots/04_qr_scanner.png" width="240" alt="QR Code Scanner Screen" /> | <img src="screenshots/05_person_chat.png" width="240" alt="P2P Person Chat Ledger" /> | <img src="screenshots/06_send_amount.png" width="240" alt="Send Money Amount Entry" /> |
+| Animated viewfinder laser, torch tint toggle, preset demo QR targets & Show My QR sheet | Conversational payment cards (sent/received), request flow & inline messaging | Quick amount chips, note tags, linked account switcher & custom numeric keypad |
+
+| 4-Digit NPCI UPI PIN Gate | Animated Payment Success & Digital Receipt |
+| :---: | :---: |
+| <img src="screenshots/07_upi_pin_pad.png" width="260" alt="NPCI 4-Digit UPI PIN Pad" /> | <img src="screenshots/08_payment_success.png" width="260" alt="Payment Success Tick and Digital Receipt" /> |
+| Masked 4-digit PIN authentication displaying debiting bank (`HDFC BANK •••• 4821`), payee & exact payable amount | 5-layer `Canvas` tick hero (sonar ripples, rotating rosette seal, gradient medallion, drawn stroke & confetti burst) + itemized `UPI Digital Receipt` & unlocked reward callout |
+
+---
+
+### 3. Bills, Rewards, Transaction History & Credit Insights
+
+| Bills & Recharges | Scratch Cards & Cashback | Transaction History | CIBIL Credit Insights |
+| :---: | :---: | :---: | :---: |
+| <img src="screenshots/09_bills_recharges.png" width="210" alt="Bills and Recharges Screen" /> | <img src="screenshots/10_rewards_scratch_cards.png" width="210" alt="Rewards Scratch Cards Screen" /> | <img src="screenshots/11_transaction_history.png" width="210" alt="Transaction History Screen" /> | <img src="screenshots/13_cibil_score.png" width="210" alt="CIBIL Score Insights Screen" /> |
+| Category filter pills, due badges & prepaid recharge routing | Pointer-drag scratch-off `Canvas` cards & live merchant offers | Instant search by name, note, or UPI Ref ID + filter chips | TransUnion CIBIL score arc (`784`) & weighted factor breakdown |
+
+---
+
+### 4. Adaptive Obsidian Dark Theme & Account Management
+
+| Obsidian Dark Home | Linked Banks, RuPay UPI & UPI Lite | Personal QR & Appearance |
+| :---: | :---: | :---: |
+| <img src="screenshots/14_home_dark.png" width="240" alt="Dark Mode Home Dashboard" /> | <img src="screenshots/12_cards_and_banks.png" width="240" alt="Cards and Bank Accounts Screen" /> | <img src="screenshots/15_profile_qr_dark.png" width="240" alt="Profile and Personal QR Dark Mode" /> |
+| Obsidian palette (`#0E1117` / `#1E232E` / `#A8C7FA`) adapting surfaces, cards & status bars | Primary account switching, UPI Lite top-ups (`₹2,000` cap) & account linking | Custom `GPayQrCodeView`, `System` / `Light` / `Dark` theme switch & biometric lock toggle |
 
 ---
 
@@ -92,27 +112,30 @@ flowchart LR
 ## Project Structure
 
 ```text
-app/src/main/java/com/example/payit/
-├── MainActivity.kt                      # Edge-to-edge host, root Auth -> App navigation & SnackbarHost
-├── model/
-│   └── PayitModels.kt                   # 16 PayitDestination routes, data models, seed data & JSON persistence
-└── ui/
-    ├── auth/
-    │   └── AuthScreen.kt                # Phone Sign In / Sign Up, 6-digit OTP verification & resend timer
-    ├── designsystem/
-    │   ├── DesignSystem.kt              # Shared fintech components, numeric keypad, OTP boxes & QR view
-    │   └── PayitIcons.kt                # 49 custom procedural ImageVector icons
-    ├── screens/
-    │   ├── HomeScreen.kt                # Dashboard, quick actions, people/business grids & quick-pay sheets
-    │   ├── PersonChatScreen.kt          # Conversational payment threads, message composer & request sheet
-    │   ├── QrScannerScreen.kt           # Simulated QR viewfinder, demo scan targets & My QR bottom sheet
-    │   ├── SendMoneyScreen.kt           # Send Money stages, NpciPinPadStage, UniversalPaymentFlowDialog & GPaySuccessTickHero
-    │   ├── RewardsScreen.kt             # Interactive Canvas scratch cards & merchant promo offers
-    │   └── SecondaryScreens.kt          # History, Balance, Cards & Banks, Bills, Recharge, Transfers, CIBIL & Profile
-    └── theme/
-        ├── Color.kt                     # Light/Dark palettes, GPay brand accents & AvatarPalette
-        ├── Theme.kt                     # PayitTheme, ThemeMode & LocalPayitColors provider
-        └── Type.kt                      # M3 Typography scale with tabular numerals (tnum)
+PayiTx/
+├── README.md
+├── screenshots/                         # Captured Pixel_9a screenshots used in documentation
+└── app/src/main/java/com/example/payit/
+    ├── MainActivity.kt                  # Edge-to-edge host, root Auth -> App navigation & SnackbarHost
+    ├── model/
+    │   └── PayitModels.kt               # 16 PayitDestination routes, data models, seed data & JSON persistence
+    └── ui/
+        ├── auth/
+        │   └── AuthScreen.kt            # Phone Sign In / Sign Up, 6-digit OTP verification & resend timer
+        ├── designsystem/
+        │   ├── DesignSystem.kt          # Shared fintech components, numeric keypad, OTP boxes & QR view
+        │   └── PayitIcons.kt            # 49 custom procedural ImageVector icons
+        ├── screens/
+        │   ├── HomeScreen.kt            # Dashboard, quick actions, people/business grids & quick-pay sheets
+        │   ├── PersonChatScreen.kt      # Conversational payment threads, message composer & request sheet
+        │   ├── QrScannerScreen.kt       # Simulated QR viewfinder, demo scan targets & My QR bottom sheet
+        │   ├── SendMoneyScreen.kt       # Send Money stages, NpciPinPadStage, UniversalPaymentFlowDialog & GPaySuccessTickHero
+        │   ├── RewardsScreen.kt         # Interactive Canvas scratch cards & merchant promo offers
+        │   └── SecondaryScreens.kt      # History, Balance, Cards & Banks, Bills, Recharge, Transfers, CIBIL & Profile
+        └── theme/
+            ├── Color.kt                 # Light/Dark palettes, GPay brand accents & AvatarPalette
+            ├── Theme.kt                 # PayitTheme, ThemeMode & LocalPayitColors provider
+            └── Type.kt                  # M3 Typography scale with tabular numerals (tnum)
 ```
 
 ---
