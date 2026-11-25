@@ -27,8 +27,3 @@ Payit is an end-to-end Android fintech application crafted in Kotlin and Jetpack
 * **Graphics**: Custom Canvas & Vector Iconography (`ImageVector`)
 * **Local Persistence**: `SharedPreferences` + JSON
 * **Build System**: Gradle Kotlin DSL (`build.gradle.kts`)
-
-## Author
-* **RAMANUJA GANESH K**
-* GitHub: [ramanujaganesh26](https://github.com/ramanujaganesh26)
-* Email: [ramanujaganeshlk.work@gmail.com](mailto:ramanujaganeshlk.work@gmail.com)
